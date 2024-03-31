@@ -232,6 +232,16 @@
     </footer>
 
     <script>
+        // Ocultar todas las secciones excepto la primera al cargar la página
+        window.addEventListener('DOMContentLoaded', function() {
+            var secciones = document.querySelectorAll('section');
+            secciones.forEach(function(seccion, index) {
+                if (index !== 0) {
+                    seccion.style.display = 'none';
+                }
+            });
+        });
+
         function mostrarSeccion(idSeccion) {
             // Ocultar todas las secciones
             var secciones = document.querySelectorAll('section');
