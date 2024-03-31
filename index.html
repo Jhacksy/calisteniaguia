@@ -6,35 +6,66 @@
     <title>Página de Calistenia</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            line-height: 1.6;
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 20px;
             text-align: center;
+            margin-bottom: 20px;
         }
+
         nav {
             background-color: #444;
             color: #fff;
             padding: 10px;
             text-align: center;
+            margin-bottom: 20px;
         }
+
         nav a {
             color: #fff;
             text-decoration: none;
             margin: 0 10px;
+            transition: color 0.3s ease;
         }
+
+        nav a:hover {
+            color: #ff9900;
+        }
+
         section {
-            display: none; /* Ocultar todas las secciones por defecto */
             padding: 20px;
             margin: 20px;
             background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        section h2 {
+            margin-top: 0;
+        }
+
+        section p {
+            margin-bottom: 15px;
+        }
+
+        section img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         footer {
             background-color: #333;
             color: #fff;
