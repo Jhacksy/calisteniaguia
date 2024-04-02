@@ -111,35 +111,35 @@
             <li>Fondos en paralelas</li>
                   <img src="fondos_en_paralelas.jpg" alt="Fondos en paralelas">
                 <p>Es un ejercicio que fortalece los siguientes grupos musculares:</p>
-                <p>-Pecho
-                <p>-Hombro
-                <p>-Triceps
+                <p>-Pecho</p>
+                <p>-Hombro</p>
+                <p>-Triceps</
 
             <li>Flexiones de brazos</li>
-                 <img src="flexiones_de_brazos.jpg" alt="Flexiones de brazos"
+                 <img src="flexiones_de_brazos.jpg" alt="Flexiones de brazos">
                 <p>En las flexiones existen muchas variantes pero las mas populares
                 y las que son una base para la fuerza son:</p>
-                <p>-Flexiones Regulares o Normales.
-                <p>-Flexiones Diamante o Cerradas.
-                <p>-Flexiones Abiertas.
-                <p>-Flexiones Pika.
-                <p>-Flexiones Declinadas e Inclinadas.
+                <p>-Flexiones Regulares o Normales.</p>
+                <p>-Flexiones Diamante o Cerradas.</p>
+                <p>-Flexiones Abiertas.</p>
+                <p>-Flexiones Pika.</p>
+                <p>-Flexiones Declinadas e Inclinadas.</p>
 
             <li>Dominadas</li>
                  <img src="dominadas.jpg" alt="Dominadas">
                <p>Es un ejercicio compuesto como lo es los fondos o las flexiones, ya que no solo trabaja un músculo
                 sino, que también trabaja otros grupos musculares como lo serían antebrazo, biceps y hombros también.
                 Las 3 variaciones mas utilizadas son:</p>
-                <p>-Dominadas Pronas.
-                <p>-Dominadas Supinas.
-                <p>-Dominadas Neutras
+                <p>-Dominadas Pronas.</p>
+                <p>-Dominadas Supinas.</p>
+                <p>-Dominadas Neutras</p>
 
             <li>Sentadillas</li>
                  <img src="sentadillas.jpg" alt="Sentadillas">
                 <p>Las sentadillas es un ejercicio basico para las piernas, trabaja directamente los músculos del muslo, músculos de la cadera y glúteos, y fortalece los huesos, ligamentos y tendones de piernas y caderas, una de las variaciones de las sentadillas serían:</p>
-                <p>-Sentadillas Bulgaras.
-                <p>-Sentadillas Explosivas.
-                <p>-Sentadillas Sumo.
+                <p>-Sentadillas Bulgaras.</p>
+                <p>-Sentadillas Explosivas.</p>
+                <p>-Sentadillas Sumo.</p>
 
             <li>Plancha</li>
                  <img src="plancha_abdominal.jpg" alt="Plancha abdominal">
@@ -149,7 +149,7 @@
     <section id="rutinas">
         <h4>Rutinas de Entrenamiento</h4>
         <p>Consulta nuestras rutinas recomendadas para mejorar tu fuerza, resistencia y flexibilidad:</p>
-        <ol>
+         
             <div class="rutinas-nivel">
         <h3>Rutina para principiantes</h3>
 
@@ -238,7 +238,6 @@
 
                 <p>-Descendentes de Fondos: 15-2 reps por 4 series.</p>
               </div>
-        </ol>
      </section>
     <section id="contacto">
         <h2>Contacto</h2>
@@ -271,6 +270,39 @@
             // Mostrar la sección deseada
             var seccionAMostrar = document.getElementById(idSeccion);
             seccionAMostrar.style.display = 'block';
+
+             // Al cargar la página
+        window.addEventListener('DOMContentLoaded', function() {
+            // Obtener la ubicación de la sección desde la URL
+            var sectionId = window.location.hash.substr(1);
+            // Mostrar la sección correspondiente si está disponible
+            if (sectionId) {
+                var section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView();
+                }
+            }
+            // Agregar un evento de clic a los enlaces del menú
+            var navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    // Evitar el comportamiento predeterminado del enlace
+                    event.preventDefault();
+                    // Obtener el ID de la sección objetivo desde el enlace
+                    var targetId = this.getAttribute('href').substr(1);
+                    // Obtener la sección objetivo
+                    var targetSection = document.getElementById(targetId);
+                    // Desplazarse suavemente hasta la sección objetivo
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        // Actualizar la URL para reflejar la sección actual
+                        history.pushState(null, null, '#' + targetId);
+                    }
+                });
+            });
+        });
         }
     </script>
 </body>
