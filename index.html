@@ -292,33 +292,6 @@
             function obtenerSeccionAlmacenada() {
                 return localStorage.getItem('seccionActual');
             }
-
-            // Función para establecer la sección actual al cargar la página
-            function establecerSeccionActual() {
-                var seccionAlmacenada = obtenerSeccionAlmacenada();
-                if (seccionAlmacenada) {
-                    var seccion = document.getElementById(seccionAlmacenada);
-                    if (seccion) {
-                        seccion.scrollIntoView();
-                    }
-                }
-            }
-
-            // Almacenar la sección actual al hacer clic en un enlace del menú
-            var enlacesMenu = document.querySelectorAll('nav a');
-            enlacesMenu.forEach(function(enlace) {
-                enlace.addEventListener('click', function(event) {
-                    var seccionActual = obtenerSeccionActual();
-                    var seccionDestino = this.getAttribute('href').substring(1);
-                    if (seccionActual !== seccionDestino) {
-                        guardarSeccionActual(seccionDestino);
-                    }
-                });
-            });
-
-            // Establecer la sección actual al cargar la página
-            establecerSeccionActual();
-        });
         }    
     </script>
 </body>
