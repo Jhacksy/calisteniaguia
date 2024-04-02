@@ -157,6 +157,7 @@
         </ul>
     </section>
     <section id="rutinas">
+         
             <div class="rutinas-nivel>
         <h4>Rutinas de Entrenamiento</h4>
         <p>Consulta nuestras rutinas recomendadas para mejorar tu fuerza, resistencia y flexibilidad:</p>
@@ -282,39 +283,43 @@
             var seccionAMostrar = document.getElementById(idSeccion);
             seccionAMostrar.style.display = 'block';
 
-             // Al cargar la página
-        window.addEventListener('DOMContentLoaded', function() {
-            // Obtener la ubicación de la sección desde la URL
-            var sectionId = window.location.hash.substr(1);
-            // Mostrar la sección correspondiente si está disponible
-            if (sectionId) {
-                var section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView();
+              // Función para guardar la sección actual en el localStorage
+            function guardarSeccionActual(seccion) {
+                localStorage.setItem('seccionActual', seccion);
+            }
+
+            // Función para obtener la sección actual del localStorage
+            function obtenerSeccionAlmacenada() {
+                return localStorage.getItem('seccionActual');
+            }
+
+            // Función para establecer la sección actual al cargar la página
+            function establecerSeccionActual() {
+                var seccionAlmacenada = obtenerSeccionAlmacenada();
+                if (seccionAlmacenada) {
+                    var seccion = document.getElementById(seccionAlmacenada);
+                    if (seccion) {
+                        seccion.scrollIntoView();
+                    }
                 }
             }
-            // Agregar un evento de clic a los enlaces del menú
-            var navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function(event) {
-                    // Evitar el comportamiento predeterminado del enlace
-                    event.preventDefault();
-                    // Obtener el ID de la sección objetivo desde el enlace
-                    var targetId = this.getAttribute('href').substr(1);
-                    // Obtener la sección objetivo
-                    var targetSection = document.getElementById(targetId);
-                    // Desplazarse suavemente hasta la sección objetivo
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                        // Actualizar la URL para reflejar la sección actual
-                        history.pushState(null, null, '#' + targetId);
+
+            // Almacenar la sección actual al hacer clic en un enlace del menú
+            var enlacesMenu = document.querySelectorAll('nav a');
+            enlacesMenu.forEach(function(enlace) {
+                enlace.addEventListener('click', function(event) {
+                    var seccionActual = obtenerSeccionActual();
+                    var seccionDestino = this.getAttribute('href').substring(1);
+                    if (seccionActual !== seccionDestino) {
+                        guardarSeccionActual(seccionDestino);
                     }
                 });
             });
+
+            // Establecer la sección actual al cargar la página
+            establecerSeccionActual();
         });
-        }
+        }    
     </script>
 </body>
 </html>
